@@ -1,0 +1,82 @@
+.register-form{
+    position: absolute;
+    width: 420px;
+    top:55%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding: 20px;
+    border-radius:5px;
+    box-shadow:0px 2px 42px 
+    rgba(0,0,0,0.111233);
+}
+
+.log-in{
+    text-align: center;
+}
+
+.log-in span {
+    text-transform: uppercase;
+    color: #349A89;
+}
+
+.log-in span:hover {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.login-form-label span{
+    text-transform: lowercase;
+    font-size: 12px;
+    color:#8c8c8c;
+}
+
+
+
+
+/******Modal*******/
+
+.registr-modal{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.registr-modal-btn{
+   float: right;
+    width: 100px;
+    padding: 10px 10px;
+    margin: 25px 0;
+    color: #fff;
+    background: #349A89;
+    border-radius: 7px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    outline:none;
+    transition: all 0.3s ease;
+}
+
+.registr-modal-btn:hover{
+    cursor: pointer;
+    color: #fff;
+    background: rgb(18, 83, 72); 
+}
+
+
+
+
+
+/* MEDIA QUERY */
+@media screen and (max-width: 500px){
+    .register-form{
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .register-form{
+        width: 280px;
+    }
+}

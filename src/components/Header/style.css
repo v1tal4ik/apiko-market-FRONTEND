@@ -1,0 +1,141 @@
+header{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 
+   0px 1px 10px 1px rgba(0,0,0,0.1) inset;
+}
+
+header img {
+    margin-left: 30px;
+}
+
+
+.header-nav{
+    width: 35%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.single {
+    justify-content: flex-end;
+}
+
+.avatar-block {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #fff;
+}
+
+.avatar-block:hover{
+    border: 2px solid #349A89;
+    cursor: pointer;
+}
+
+.avatar-block img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.header-btn{
+    color: #fff;
+    background: #349A89;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px 50px;
+    border:none;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.header-btn:hover{
+    cursor: pointer;
+    color: #fff;
+    background: rgb(18, 83, 72);    
+}
+
+.header-nav span {
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+}
+
+.header-nav span:hover {
+    border-bottom: 1px solid rgb(18, 83, 72); 
+}
+
+.fa-heart{
+    font-size: 20px;
+}
+
+.fa-heart:hover{
+    color:red;
+}
+
+.header-nav span:hover,.fa-heart:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 600px){
+    .header-btn{
+        padding: 7px 35px;
+    }
+    .header-nav span {
+        font-size: 12px;
+    }
+    .fa-heart{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .header-btn{
+        padding: 5px 25px;
+        font-size: 12px;
+    }
+    .header-nav span {
+        font-size: 12px;
+    }
+    .fa-heart{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .header-btn{
+        padding: 5px 25px;
+        font-size: 12px;
+    }
+    .header-nav span {
+        font-size: 12px;
+    }
+    .fa-heart{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .header-btn{
+        padding: 5px 15px;
+        font-size: 10px;
+    }
+    .header-nav span {
+        font-size: 10px;
+    }
+    .fa-heart{
+        font-size: 16px;
+    }
+}
