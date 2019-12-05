@@ -4,8 +4,7 @@ header{
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    box-shadow: 
-   0px 1px 10px 1px rgba(0,0,0,0.1) inset;
+    box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.1) inset;
 }
 
 header img {
@@ -13,7 +12,7 @@ header img {
 }
 
 
-.header-nav{
+.header-nav {
     width: 35%;
     display:flex;
     justify-content: space-between;
@@ -71,15 +70,15 @@ header img {
     border-bottom: 1px solid rgb(18, 83, 72); 
 }
 
-.fa-heart{
+.header-heart{
     font-size: 20px;
 }
 
-.fa-heart:hover{
+.header-heart:hover{
     color:red;
 }
 
-.header-nav span:hover,.fa-heart:hover{
+.header-nav span:hover,.header-heart:hover{
     cursor: pointer;
 }
 

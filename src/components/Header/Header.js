@@ -6,7 +6,7 @@ import { store } from '../../index';
 import './style.css';
 
 // Path for img when I use server static file 
-// src='./img/logo.png' 
+// src='./img/logo.png'
 
 
 class Header extends Component {
@@ -29,13 +29,21 @@ class Header extends Component {
 
   render() {
     const { userAuth } = this.state;
+    const lightTheme = {
+      color:'#000',
+      background:'#fff',
+    }
+    const darkTheme = {
+      color:'#fff',
+      background:'#000',
+    }
     return (
-      <header>
-      <Link to ='/auth/login'><img src='../../img/logo.png' className='logo' alt='apiko' /></Link>
+      <header style = { userAuth ? darkTheme: lightTheme } >
+      <Link to ='/auth/login'><img src = { userAuth ? '../../img/logo-white.png' : '../../img/logo-dark.png'} className='logo' alt='apiko' /></Link>
       { userAuth ?
         <div className='header-nav'>
           <button className='header-btn'>sell</button>
-          <i className="far fa-heart"></i> 
+          <i className="far fa-heart header-heart"></i> 
           <div className='avatar-block' onClick = {this.foo}>
               <img src="../../img/avatar.jpg" alt="avatar" />
           </div>
