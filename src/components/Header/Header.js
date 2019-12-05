@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUser } from '../../modules/user/reducer';
+import { getUser } from '../../modules/user/selectors';
 import { store } from '../../index';
 import './style.css';
+
+// Path for img when I use server static file 
+// src='./img/logo.png' 
 
 
 class Header extends Component {
@@ -24,17 +27,11 @@ class Header extends Component {
     store.subscribe(this.userAuthObserver);
   }
 
-  foo = () =>{
-    console.log('work');
-  }
-
-
   render() {
     const { userAuth } = this.state;
     return (
       <header>
       <Link to ='/auth/login'><img src='../../img/logo.png' className='logo' alt='apiko' /></Link>
-      {/* src='./img/logo.png' */}
       { userAuth ?
         <div className='header-nav'>
           <button className='header-btn'>sell</button>
@@ -56,6 +53,3 @@ class Header extends Component {
 export default connect(state => ({
   user: getUser(state),
 }), {})(Header);
-
-
-// <Link to='/auth/login'><span>Logout</span></Link> 

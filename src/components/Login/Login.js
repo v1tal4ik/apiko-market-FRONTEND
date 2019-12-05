@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserByEmail , isPassValid, singInById } from '../../api/index';
 import { fetchUserDataSuccess, fetchUserDataFailure, userAuth} from '../../modules/user/actions';
-import { getUser } from '../../modules/user/reducer';
+import { getUser } from '../../modules/user/selectors';
 import './style.css';
 
 
@@ -65,8 +65,6 @@ class Login extends Component{
         }
       };
       
-
-
     render(){
         const { check, status } = this.state;
         return (
