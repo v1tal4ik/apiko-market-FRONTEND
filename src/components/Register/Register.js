@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { isEmailUnique, addNewUser } from '../../api/index';
 import Rodal from 'rodal';
+import InputGroup from '../InpurGroup'
+import { isEmailUnique, addNewUser } from '../../api/index';
 import 'rodal/lib/rodal.css';
 import './style.css';
 
@@ -116,50 +117,63 @@ class Register extends Component {
             <>
             <form className='register-form'>
                 <p className='login-form-title'>Register</p>
+                <InputGroup
+                  label = "Email (unique)"
+                  type = "text"
+                  name = "email"
+                  placeholder = 'Example@gmail.com'
+                  onChangeFunc = {this.handleChangeInput }
+                  onBlurFunc = { this.checkEmail }
+                  value = { data.email }
+                  check = { check.email }
+                  status = { status.email }
+                  isRequired
+                  />
 
-                <label className='login-form-label'>Email <span>(unique)</span></label>
-                <input className="login-form-input" type="text" name='email' value={data.email} placeholder='Example@gmail.com' onChange={this.handleChangeInput} onBlur={this.checkEmail.bind(this)} required/>
-                {check.email
-                  ? <div className = 'form-status-icon' >
-                            {status.email ? <i className="fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
-                        </div>
-                  : null
-                }
+                <InputGroup
+                  label = "Full Name"
+                  type = "text"
+                  name = "fullName"
+                  placeholder = "Tony Stark"
+                  onChangeFunc = {this.handleChangeInput }
+                  onBlurFunc = { this.checkName }
+                  value = { data.fullName }
+                  check = { check.fullName }
+                  status = { status.fullName }
+                  isRequired
+                  />
 
-                <label className='login-form-label'>Full Name</label>
-                <input className="login-form-input" type="text" name='fullName' value={data.fullName} placeholder='Tony Stark' onChange={this.handleChangeInput} onBlur={this.checkName} required />
-                {check.fullName
-                  ? <div className = 'form-status-icon' >
-                            {status.fullName ? <i className="fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
-                        </div>
-                  : null
-                }
+                <InputGroup
+                  label = "Password"
+                  type = "password"
+                  name = "password"
+                  onChangeFunc = {this.handleChangeInput }
+                  onBlurFunc = { this.checkPass }
+                  value = { data.password }
+                  check = { check.password }
+                  status = { status.password }
+                  isRequired
+                  />
 
-                <label className='login-form-label'>Password</label> <br/>
-                <input className="login-form-input" type="password" name='password' value={data.password} onChange={this.handleChangeInput} onBlur={this.checkPass} required />
-                {check.password
-                  ? <div className = 'form-status-icon' >
-                            {status.password ? <i className="fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
-                        </div>
-                  : null
-                }
-
-                <label className='login-form-label'>Password Again</label> <br/>
-                <input className="login-form-input" type="password" name='passwordAgain' value={data.passwordAgain} onChange={this.handleChangeInput} onBlur={this.checkPass} required />
-                {check.password
-                  ? <div className = 'form-status-icon' >
-                            {status.password ? <i className="fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
-                        </div>
-                  : null
-                }
+                <InputGroup
+                  label = "Password Again "
+                  type = "password"
+                  name = "passwordAgain"
+                  onChangeFunc = {this.handleChangeInput }
+                  onBlurFunc = { this.checkPass }
+                  value = { data.passwordAgain }
+                  check = { check.password }
+                  status = { status.password }
+                  isRequired
+                  />
 
                 <button className='login-form-btn' onClick={this.handleContinue}>Continue</button>
                 <p className='log-in'>I already have an account, <span><Link to='/login' >Log in</Link></span></p>
             </form>
 
-            <Rodal visible={visible} onClose={this.closeModalAdd} animation={'rotate'} height={150} >
+            <Rodal visible = { visible } onClose = { this.closeModalAdd } animation = { 'rotate' } height = { 150 } >
                    <div className='registr-modal'>
-                      {msg}
+                      { msg }
                    </div>
                    {
                        status.registration
