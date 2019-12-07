@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Rodal from 'rodal';
-import InputGroup from '../InpurGroup'
+import InputGroup from '../InputGroup'
 import { isEmailUnique, addNewUser } from '../../api/index';
 import 'rodal/lib/rodal.css';
 import './style.css';

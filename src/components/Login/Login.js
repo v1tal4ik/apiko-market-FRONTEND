@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getUserByEmail, isPassValid, singInById } from '../../api/index';
 import { fetchUserDataSuccess, fetchUserDataFailure, userAuth } from '../../modules/user/actions';
 import { getUser } from '../../modules/user/selectors';
-import InputGroup from '../InpurGroup';
+import InputGroup from '../InputGroup';
 import './style.css';
 
 

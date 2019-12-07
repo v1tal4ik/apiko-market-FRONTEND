@@ -1,14 +1,12 @@
-
 .market-item {
     position: relative;
     width: 18%;
-    min-height: 200px;
+    height: 220px;
     background: #fff;
     border: 1px solid #c9c9c9c9;
     border-radius: 5%;
     margin:2%;
     transition: all 0.2s;
-  
   }
   
   .market-item:hover {

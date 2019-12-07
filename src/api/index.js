@@ -46,10 +46,12 @@ const singInById = ({ id }) => (
     .catch(() => false)
 );
 
-const test = () => (
-  axios.get('/test')
+const getItemList = () => (
+  axios.get('/itemList')
     .then(({ data }) => data)
-    .catch(() => false)
+    .catch((err) => {
+      throw new Error(err.message);
+    })
 );
 
 
@@ -59,5 +61,5 @@ export {
   getUserByEmail,
   isPassValid,
   singInById,
-  test,
+  getItemList,
 };
