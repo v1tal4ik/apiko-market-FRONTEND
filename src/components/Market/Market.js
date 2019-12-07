@@ -38,6 +38,7 @@ class Market extends Component {
   render() {
     const { visible } = this.state;
     const { isLoading, arrOfItem, mainError } = this.props;
+    // Prop for modal window
     const w = 300;
     const h = 100;
     return (

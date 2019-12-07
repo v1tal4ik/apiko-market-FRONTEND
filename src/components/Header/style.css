@@ -1,7 +1,6 @@
 header {
     width: 100%;
     height: 70px;
-    /* position: fixed; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,7 +45,7 @@ header img {
     margin: 0;
 }
 
-.header-btn{
+.header-btn {
     color: #fff;
     background: #349A89;
     font-size: 14px;
@@ -57,7 +56,7 @@ header img {
     transition: all 0.3s ease-in-out;
 }
 
-.header-btn:hover{
+.header-btn:hover {
     cursor: pointer;
     color: #fff;
     background: rgb(18, 83, 72);    
@@ -77,8 +76,9 @@ header img {
     font-size: 20px;
 }
 
-.header-heart:hover{
-    color:red;
+.header-heart:hover {
+    font-weight: 900;
+    color:#349A89;
 }
 
 .header-nav span:hover,.header-heart:hover{
