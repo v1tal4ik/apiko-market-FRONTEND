@@ -6,14 +6,14 @@ import './style.css';
 
 
 // eslint-disable-next-line object-curly-newline
-const MarketItem = ({ id, name, price, img }) => <>
-    <div className = "market-item" data-id = {id}>
+const TourItem = ({ id, name, price, img }) => <>
+    <div className = "tour-item" data-id = {id}>
         <img src = { img } alt = "icon"/>
         <i className = "far fa-heart item-heart" data-id = {id}></i>
-        <h5 className = "item-title">{ name }</h5>
-        <h4 className = "item-price">{ price }</h4>
+        <h5 className = "tour-title">{ name }</h5>
+        <h4 className = "tour-price">{ price }</h4>
     </div>
     </>;
 
 
-export default MarketItem;
+export default TourItem;

@@ -1,13 +1,13 @@
-import { FETCH_ITEM_LIST, FETCH_ITEM_LIST_SUCCESS, FETCH_ITEM_LIST_FAILURE } from '../items/actions';
+import { FETCH_TOURS, FETCH_TOURS_SUCCESS, FETCH_TOURS_FAILURE } from '../tours/actions';
 
 
 export default (state = false, action) => {
   switch (action.type) {
-    case FETCH_ITEM_LIST:
+    case FETCH_TOURS:
       return true;
-    case FETCH_ITEM_LIST_SUCCESS:
+    case FETCH_TOURS_SUCCESS:
       return false;
-    case FETCH_ITEM_LIST_FAILURE:
+    case FETCH_TOURS_FAILURE:
       return false;
     default:
       return state;
