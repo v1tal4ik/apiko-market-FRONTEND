@@ -1,11 +1,11 @@
 // eslint-disable-next-line object-curly-newline
 import { takeEvery, put, call, fork } from 'redux-saga/effects';
 import { FETCH_TOURS, fetchToursSuccess, fetchToursFailure } from './actions';
-import { getItemList } from '../../api/index';
+import { getTours } from '../../api/index';
 
 export function* fetchToursFlow() {
   try {
-    const result = yield call(getItemList);
+    const result = yield call(getTours);
     yield put(fetchToursSuccess(result));
   } catch (error) {
     yield put(fetchToursFailure(error.message));

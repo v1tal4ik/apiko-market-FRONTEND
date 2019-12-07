@@ -115,8 +115,8 @@ class Register extends Component {
     } = this.state;
     return (
             <>
-            <form className='register-form'>
-                <p className='login-form-title'>Register</p>
+            <form className = 'register-form'>
+                <p className = 'login-form-title'>Register</p>
                 <InputGroup
                   label = "Email (unique)"
                   type = "text"
@@ -167,12 +167,12 @@ class Register extends Component {
                   isRequired
                   />
 
-                <button className='login-form-btn' onClick={this.handleContinue}>Continue</button>
-                <p className='log-in'>I already have an account, <span><Link to='/login' >Log in</Link></span></p>
+                <button className = 'login-form-btn' onClick = {this.handleContinue}>Continue</button>
+                <p className = 'log-in'>I already have an account, <span><Link to = '/login' >Log in</Link></span></p>
             </form>
 
             <Rodal visible = { visible } onClose = { this.closeModalAdd } animation = { 'rotate' } height = { 150 } >
-                   <div className='registr-modal'>
+                   <div className = 'registr-modal'>
                       { msg }
                    </div>
                    {

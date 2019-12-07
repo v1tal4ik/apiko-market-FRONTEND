@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-const getItemList = () => (
-  axios.get('/itemList')
+const getTours = () => (
+  axios.get('/tours')
     .then(({ data }) => data)
     .catch((err) => {
       throw new Error(err.message);
@@ -10,5 +10,5 @@ const getItemList = () => (
 );
 
 export {
-  getItemList,
+  getTours,
 };

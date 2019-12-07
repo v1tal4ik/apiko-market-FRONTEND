@@ -4,7 +4,7 @@ import './style.css';
 
 // eslint-disable-next-line object-curly-newline
 const InputGroup = ({ label, type, name, placeholder, onChangeFunc, onBlurFunc, value, check, status, isRequired }) => <>
-  <label className='login-form-label'>{ label }</label>
+  <label className = 'login-form-label'>{ label }</label>
   { isRequired
     ? <input
       className = "login-form-input"
@@ -28,7 +28,7 @@ const InputGroup = ({ label, type, name, placeholder, onChangeFunc, onBlurFunc, 
       }
   { check
     ? <div className = 'form-status-icon' >
-      {status ? <i className="fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
+      {status ? <i className = "fas fa-check green"></i > : < i className = "fas fa-times red" > </i>}
   </div>
     : null
   }

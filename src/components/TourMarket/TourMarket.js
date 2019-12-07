@@ -44,11 +44,10 @@ class TourMarket extends Component {
     return (
             <>
             <div className = 'tour-market-container'>
-            { false ? arrOfItem.map(item => <TourItem key = {item.id} {...item} />) : <TourMockItem />}
-            {/* { arrOfItem !== 0 && !isLoading && mainError === null ? arrOfItem.map(item => <TourItem key = {item.id} {...item} />) : <TourMockItem />} */}
+            { arrOfItem !== 0 && !isLoading && mainError === null ? arrOfItem.map(item => <TourItem key = {item.id} {...item} />) : <TourMockItem />}
             </div>
             <Rodal visible = {visible} animation = {'rotate'} duration = {500} wigth = {w} height = {h} onClose = {this.closeModal} >
-                <div className='tour-market-modal-error'>{mainError}</div>
+                <div className = 'tour-market-modal-error'>{mainError}</div>
             </Rodal>
             </>
     );

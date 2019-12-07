@@ -39,18 +39,18 @@ class Header extends Component {
     }
     return (
       <header style = { userAuth ? darkTheme: lightTheme } >
-      <Link to ='/auth/login'><img src = { userAuth ? '../../img/logo-white.png' : '../../img/logo-dark.png'} className='logo' alt='apiko' /></Link>
+      <Link to = '/auth/login'><img src = { userAuth ? '../../img/logo-white.png' : '../../img/logo-dark.png'} className = 'logo' alt = 'apiko' /></Link>
       { userAuth ?
-        <div className='header-nav'>
-          <button className='header-btn'>sell</button>
-          <i className="far fa-heart header-heart"></i> 
-          <div className='avatar-block' onClick = {this.foo}>
-              <img src="../../img/avatar.jpg" alt="avatar" />
+        <div className = 'header-nav'>
+          <button className = 'header-btn'>sell</button>
+          <i className = "far fa-heart header-heart"></i> 
+          <div className = 'avatar-block' onClick = {this.foo}>
+              <img src="../../img/avatar.jpg" alt = "avatar" />
           </div>
         </div>  
                 :
-        <div className='header-nav single'>
-           <Link to='/auth/login'><span>Login</span></Link>
+        <div className = 'header-nav single'>
+           <Link to = '/auth/login'><span>Login</span></Link>
         </div> }
       </header>
     );
