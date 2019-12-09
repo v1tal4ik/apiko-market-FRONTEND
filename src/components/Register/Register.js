@@ -37,9 +37,9 @@ class Register extends Component {
     };
 
     checkEmail = async ({ target: { value: email } }) => {
-      const exp = /@/;
+      const exp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
       const isUnique = await isEmailUnique({ email });
-      const result = ((email.search(exp) !== -1 && isUnique));
+      const result = ( (exp.test(email)) && isUnique));
       this.setState({
         status: { ...this.state.status, email: result },
         check: { ...this.state.check, email: true },
