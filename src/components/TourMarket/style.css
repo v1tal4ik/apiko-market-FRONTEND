@@ -1,0 +1,32 @@
+.tour-market-container {
+  width: 100%;
+  height: 89vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.tour-market-modal-error {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.tour-market-container::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 0 rgba(0,0,0,0.3);
+	background-color: #d6d6d6;
+}
+
+.tour-market-container::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: rgb(160, 46, 46);
+}
+
+.tour-market-container::-webkit-scrollbar-thumb
+{
+	background-color: #959393;
+}

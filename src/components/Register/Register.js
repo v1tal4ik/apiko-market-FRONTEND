@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Rodal from 'rodal';
-import InputGroup from '../InpurGroup'
+import InputGroup from '../InputGroup'
 import { isEmailUnique, addNewUser } from '../../api/index';
 import 'rodal/lib/rodal.css';
 import './style.css';
@@ -39,7 +39,7 @@ class Register extends Component {
     checkEmail = async ({ target: { value: email } }) => {
       const exp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
       const isUnique = await isEmailUnique({ email });
-      const result = ( (exp.test(email)) && isUnique));
+      const result = ( (exp.test(email) && isUnique))
       this.setState({
         status: { ...this.state.status, email: result },
         check: { ...this.state.check, email: true },
@@ -115,8 +115,8 @@ class Register extends Component {
     } = this.state;
     return (
             <>
-            <form className='register-form'>
-                <p className='login-form-title'>Register</p>
+            <form className = 'register-form'>
+                <p className = 'login-form-title'>Register</p>
                 <InputGroup
                   label = "Email (unique)"
                   type = "text"
@@ -167,12 +167,12 @@ class Register extends Component {
                   isRequired
                   />
 
-                <button className='login-form-btn' onClick={this.handleContinue}>Continue</button>
-                <p className='log-in'>I already have an account, <span><Link to='/login' >Log in</Link></span></p>
+                <button className = 'login-form-btn' onClick = {this.handleContinue}>Continue</button>
+                <p className = 'log-in'>I already have an account, <span><Link to = '/login' >Log in</Link></span></p>
             </form>
 
             <Rodal visible = { visible } onClose = { this.closeModalAdd } animation = { 'rotate' } height = { 150 } >
-                   <div className='registr-modal'>
+                   <div className = 'registr-modal'>
                       { msg }
                    </div>
                    {

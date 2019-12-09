@@ -1,0 +1,18 @@
+.mock {
+  background: #c9c9cc;
+}
+
+.mock div {
+  width: 90%;
+  margin-top: 60%;
+  margin-left: 10px;
+  height: 20px;
+  background: #908f8f;
+}
+.mock .sub {
+  width: 70%;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 30px;
+  background: #908f8f;
+}

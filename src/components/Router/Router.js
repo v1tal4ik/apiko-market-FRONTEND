@@ -6,7 +6,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Header from '../Header';
 import Login from '../Login';
 import Register from '../Register';
-import Market from '../Market';
+import TourMarket from '../TourMarket';
 
 const Router = () => (
   <>
@@ -15,7 +15,7 @@ const Router = () => (
       <Switch>
           <Route path = '/auth/login' component = { Login } exact/>
           <Route path = '/auth/registration' component = { Register} exact/>
-          <PrivateRoute path = '/' component = { Market } exact/>
+          <PrivateRoute path = '/' component = { TourMarket } exact/>
           <Redirect to = '/auth/login' exact />
       </Switch>
     </BrowserRouter>

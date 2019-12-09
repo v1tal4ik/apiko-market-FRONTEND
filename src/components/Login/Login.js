@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getUserByEmail, isPassValid, singInById } from '../../api/index';
 import { fetchUserDataSuccess, fetchUserDataFailure, userAuth } from '../../modules/user/actions';
 import { getUser } from '../../modules/user/selectors';
-import InputGroup from '../InpurGroup';
+import InputGroup from '../InputGroup';
 import './style.css';
 
 
@@ -70,8 +70,8 @@ class Login extends Component {
     const { check, status } = this.state;
     return (
             <>
-            <form className='login-form'>
-                <p className='login-form-title'>Login</p>
+            <form className = 'login-form'>
+                <p className = 'login-form-title'>Login</p>
 
                 <InputGroup
                   label = "Login"
@@ -94,11 +94,11 @@ class Login extends Component {
                   status = { status.password }
                   />
 
-                <Link to='#'><p className='login-form-helper'>Don't remember password?</p></Link>
-                <button className='login-form-btn' onClick={this.handleContinue}>Continue</button>
+                <Link to='#'><p className = 'login-form-helper'>Don't remember password?</p></Link>
+                <button className = 'login-form-btn' onClick = {this.handleContinue}>Continue</button>
             </form>
-            <div className='register-block'>
-                <p>I have no account, <span><Link to='/auth/registration' >register now</Link></span></p>
+            <div className = 'register-block'>
+                <p>I have no account, <span><Link to = '/auth/registration' >register now</Link></span></p>
             </div>
             </>
     );

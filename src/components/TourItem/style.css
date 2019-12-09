@@ -1,0 +1,49 @@
+.tour-item {
+    position: relative;
+    width: 18%;
+    height: 220px;
+    margin:2%;
+    background: #fff;
+    border: 1px solid #c9c9c9c9;
+    border-radius: 5%;
+    transition: all 0.2s;
+  }
+  
+  .tour-item:hover {
+    cursor: pointer;
+    border: 1px solid #349A89;
+    box-shadow: 0 0 10px rgb(148, 151, 151);
+  }
+  
+  .tour-item img {
+    width: 100%;
+    height: 70%;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+  }
+  
+  .item-heart {
+    position:absolute;
+    top:63%;
+    right: 3%;
+    padding: 6px;
+    color: #349A89;
+    background: #fff;
+    border-radius: 50%;
+  }
+  
+  .item-heart:hover {
+    color:rgb(81, 216, 193)
+  }
+  
+  .tour-item h5 {
+    font-weight: 400;  
+    margin: 0;
+    padding: 5px;
+  }
+  
+  .tour-item h4 {
+    margin: 0;
+    padding-left: 5px;
+    padding-bottom: 5px;
+  }

@@ -1,7 +1,6 @@
 header {
     width: 100%;
     height: 70px;
-    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,7 +34,7 @@ header img {
     border: 2px solid #fff;
 }
 
-.avatar-block:hover{
+.avatar-block:hover {
     border: 2px solid #349A89;
     cursor: pointer;
 }
@@ -46,7 +45,7 @@ header img {
     margin: 0;
 }
 
-.header-btn{
+.header-btn {
     color: #fff;
     background: #349A89;
     font-size: 14px;
@@ -57,7 +56,7 @@ header img {
     transition: all 0.3s ease-in-out;
 }
 
-.header-btn:hover{
+.header-btn:hover {
     cursor: pointer;
     color: #fff;
     background: rgb(18, 83, 72);    
@@ -73,12 +72,13 @@ header img {
     border-bottom: 1px solid rgb(18, 83, 72); 
 }
 
-.header-heart{
+.header-heart {
     font-size: 20px;
 }
 
-.header-heart:hover{
-    color:red;
+.header-heart:hover {
+    font-weight: 900;
+    color:#349A89;
 }
 
 .header-nav span:hover,.header-heart:hover{
