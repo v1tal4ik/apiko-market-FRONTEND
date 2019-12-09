@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import './style.css';
 
 
-// eslint-disable-next-line object-curly-newline
-const InputGroup = ({ label, type, name, placeholder, onChangeFunc, onBlurFunc, value, check, status, isRequired }) => <>
+const InputGroup = ({
+  label,
+  type,
+  name,
+  placeholder,
+  onChangeFunc,
+  onBlurFunc,
+  value,
+  check,
+  status,
+  isRequired,
+}) => <>
   <label className = 'login-form-label'>{ label }</label>
   { isRequired
     ? <input

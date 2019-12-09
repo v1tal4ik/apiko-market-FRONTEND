@@ -29,6 +29,9 @@ class Header extends Component {
 
   render() {
     const { userAuth } = this.state;
+    const logoSrc = userAuth ? 
+          '../../img/logo-white.png' 
+          : '../../img/logo-dark.png';
     const lightTheme = {
       color:'#000',
       background:'#fff',
@@ -39,7 +42,13 @@ class Header extends Component {
     }
     return (
       <header style = { userAuth ? darkTheme: lightTheme } >
-      <Link to = '/auth/login'><img src = { userAuth ? '../../img/logo-white.png' : '../../img/logo-dark.png'} className = 'logo' alt = 'apiko' /></Link>
+      <Link to = '/auth/login'>
+        <img 
+          src = { logoSrc } 
+          className = 'logo' 
+          alt = 'apiko' 
+          />
+       </Link>
       { userAuth ?
         <div className = 'header-nav'>
           <button className = 'header-btn'>sell</button>
