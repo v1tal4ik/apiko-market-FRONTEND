@@ -10,6 +10,7 @@ import './style.css';
 
 const { Option } = Select;
 const initialState = {
+  isKeyWasDown: false,
   searchQuery: '',
   searchLocation: 'Location',
 };
@@ -18,14 +19,18 @@ class SearchBlock extends Component {
   constructor(props) {
     super();
     this.state = initialState;
-    this.handleChangeInput = ({ target: { name, value } }) => this.setState({ [name]: value });
-    this.handleChangeLocation = searchLocation => this.setState({ searchLocation });
+    this.handleChangeInput = ({ target: { name, value } }) => {
+      this.setState({ [name]: value.trim(), isKeyWasDown: !!value });
+    };
+    this.handleChangeLocation = searchLocation => this.setState({ searchLocation, isKeyWasDown: true });
     this.handleClickSearch = (e) => {
+      e.preventDefault();
       const { searchQuery, searchLocation } = this.state;
       const { changeSearch } = this.props;
-      e.preventDefault();
-      if (searchQuery.trim() && searchLocation !== 'Location') {
-        changeSearch(this.state);
+      if (searchQuery || searchLocation !== 'Location') {
+        const searchQueryProp = searchQuery || null;
+        const searchLocationProp = searchLocation !== 'Location' ? searchLocation : null;
+        changeSearch({ searchQuery: searchQueryProp, searchLocation: searchLocationProp });
       }
     };
     this.handleClickReset = (e) => {
@@ -37,7 +42,8 @@ class SearchBlock extends Component {
   }
 
   render() {
-    const { searchQuery, searchLocation } = this.state;
+    const { searchQuery, searchLocation, isKeyWasDown } = this.state;
+    const isVisible = isKeyWasDown ? 'inline-block' : 'none';
     return (
       <form className = 'search-block'>
         <i className = 'fas fa-search search-icon' aria-hidden = 'true'></i>
@@ -64,7 +70,7 @@ class SearchBlock extends Component {
             <Option key ='south america' value='south america'>South America</Option>
         </Select>
         <button className = 'search-btn' onClick = {this.handleClickSearch}>search</button>
-        <button className = 'search-btn' onClick = {this.handleClickReset}>reset</button>
+        <button className = 'search-btn' style = {{ display: isVisible }} onClick = {this.handleClickReset}>reset</button>
       </form>
     );
   }

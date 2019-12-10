@@ -27,14 +27,23 @@ class TourMarket extends Component {
     };
     this.renderTours = (item) => {
       const { searchQuery, searchLocation } = this.props.search;
-      const getCheck = !!(searchQuery && searchLocation);
-      if (getCheck) {
-        if (item.name.includes(searchQuery) && item.location.includes(searchLocation)) {
-          return <TourItem key = {item.id} {...item} />;
+      const { id, name, location } = item;
+
+      if (searchQuery && searchLocation) {
+        if (name.includes(searchQuery) && item.location.includes(searchLocation)) {
+          return <TourItem key = {id} {...item} />;
         }
         return null;
       }
-      return <TourItem key = {item.id} {...item} />;
+
+      if (searchQuery) {
+        return name.includes(searchQuery) ? <TourItem key = {id} {...item} /> : null;
+      }
+
+      if (searchLocation) {
+        return location.includes(searchLocation) ? <TourItem key = {id} {...item} /> : null;
+      }
+      return <TourItem key = {id} {...item} />;
     };
     this.errorObserver = () => {
       const { mainError } = this.props;
@@ -53,7 +62,6 @@ class TourMarket extends Component {
       isLoading,
       arrOfItem,
       mainError,
-      search: { searchQuery, location },
     } = this.props;
     // Prop for modal window
     const w = 300;
@@ -64,9 +72,6 @@ class TourMarket extends Component {
             { arrOfItem !== 0 && !isLoading && mainError === null
               ? arrOfItem.map(this.renderTours)
               : <TourMockItem />}
-            {/* { arrOfItem !== 0 && !isLoading && mainError === null
-              ? arrOfItem.map(item => <TourItem key = {item.id} {...item} />)
-              : <TourMockItem />} */}
             </div>
             <Rodal visible = {visible} animation = {'rotate'} duration = {500} wigth = {w} height = {h} onClose = {this.closeModal} >
                 <div className = 'tour-market-modal-error'>{mainError}</div>
