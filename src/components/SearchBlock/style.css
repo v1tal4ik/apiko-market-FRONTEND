@@ -1,7 +1,8 @@
 .search-block {
-  width:50%;
+  width:80%;
   margin: 0 auto;
   margin-top: 15px;
+  margin-right: 4%;
 }
 
 .search-input {
