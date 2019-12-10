@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBlock from '../SearchBlock';
 import { connect } from 'react-redux';
 import { getUser } from '../../modules/user/selectors';
 import { store } from '../../index';
@@ -13,7 +14,7 @@ class Header extends Component {
   constructor(props) {
     super();
     this.state = {
-      userAuth: false,
+      userAuth: true,
     };
   }
 
@@ -42,21 +43,24 @@ class Header extends Component {
     }
     return (
       <header style = { userAuth ? darkTheme: lightTheme } >
-      <Link to = '/auth/login'>
+      <Link to = '/auth/login' className = 'logo'>
         <img 
           src = { logoSrc } 
-          className = 'logo' 
+          className = 'logo-img' 
           alt = 'apiko' 
           />
        </Link>
       { userAuth ?
+      <>
         <div className = 'header-nav'>
           <button className = 'header-btn'>sell</button>
           <i className = "far fa-heart header-heart"></i> 
           <div className = 'avatar-block' onClick = {this.foo}>
               <img src="../../img/avatar.jpg" alt = "avatar" />
           </div>
-        </div>  
+        </div>
+        <SearchBlock />
+        </>
                 :
         <div className = 'header-nav single'>
            <Link to = '/auth/login'><span>Login</span></Link>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './style.css';
 
 // in order to map can iterate array
