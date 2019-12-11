@@ -10,19 +10,45 @@ import './style.css';
 
 const { Option } = Select;
 const initialState = {
-  isKeyWasDown: false,
+  wasKeyDown: false,
   searchQuery: '',
   searchLocation: 'Location',
 };
+export const arrOfContinent = [
+  {
+    value: 'asia',
+    text: 'Asia',
+  },
+  {
+    value: 'africa',
+    text: 'Africa',
+  },
+  {
+    value: 'europe',
+    text: 'Europe',
+  },
+  {
+    value: 'australia',
+    text: 'Australia',
+  },
+  {
+    value: 'north america',
+    text: 'North America',
+  },
+  {
+    value: 'south america',
+    text: 'South America',
+  },
+];
 
 class SearchBlock extends Component {
   constructor(props) {
     super();
     this.state = initialState;
     this.handleChangeInput = ({ target: { name, value } }) => {
-      this.setState({ [name]: value.trim(), isKeyWasDown: !!value });
+      this.setState({ [name]: value.trim(), wasKeyDown: !!value });
     };
-    this.handleChangeLocation = searchLocation => this.setState({ searchLocation, isKeyWasDown: true });
+    this.handleChangeLocation = searchLocation => this.setState({ searchLocation, wasKeyDown: true });
     this.handleClickSearch = (e) => {
       e.preventDefault();
       const { searchQuery, searchLocation } = this.state;
@@ -42,8 +68,8 @@ class SearchBlock extends Component {
   }
 
   render() {
-    const { searchQuery, searchLocation, isKeyWasDown } = this.state;
-    const isVisible = isKeyWasDown ? 'inline-block' : 'none';
+    const { searchQuery, searchLocation, wasKeyDown } = this.state;
+    const isVisible = wasKeyDown ? 'inline-block' : 'none';
     return (
       <form className = 'search-block'>
         <i className = 'fas fa-search search-icon' aria-hidden = 'true'></i>
@@ -62,12 +88,7 @@ class SearchBlock extends Component {
             value = {searchLocation}
             onChange = {this.handleChangeLocation}
             >
-            <Option key ='asia' value='asia'>Asia</Option>
-            <Option key ='africa' value='africa'>Africa</Option>
-            <Option key ='europe' value='europe'>Europe</Option>
-            <Option key ='australia' value='australia'>Australia</Option>
-            <Option key ='north america' value='north america'>North America</Option>
-            <Option key ='south america' value='south america'>South America</Option>
+            {arrOfContinent.map((item, index) => <Option key = {index} value={item.value}>{item.text}</Option>)}
         </Select>
         <button className = 'search-btn' onClick = {this.handleClickSearch}>search</button>
         <button className = 'search-btn' style = {{ display: isVisible }} onClick = {this.handleClickReset}>reset</button>

@@ -13,7 +13,7 @@ const Router = () => (
     <BrowserRouter>
       <Header />
       <Switch>
-          <Route path = '/auth/login' component = { TourMarket } exact/>
+          <Route path = '/auth/login' component = { Login } exact/>
           <Route path = '/auth/registration' component = { Register} exact/>
           <PrivateRoute path = '/' component = { TourMarket } exact/>
           <Redirect to = '/auth/login' exact />

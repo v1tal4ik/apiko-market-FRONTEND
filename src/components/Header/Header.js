@@ -14,7 +14,7 @@ class Header extends Component {
   constructor(props) {
     super();
     this.state = {
-      userAuth: true,
+      userAuth: false,
     };
   }
 
