@@ -24,12 +24,12 @@ class Header extends Component {
     }
   }
 
-  componentDidMount = () =>{
+  componentDidMount = () => {
     store.subscribe(this.userAuthObserver);
   }
 
   render() {
-    const { userAuth } = this.state;
+    const { userAuth } = this.state; 
     const logoSrc = userAuth ? 
           '../../img/logo-white.png' 
           : '../../img/logo-dark.png';
@@ -43,7 +43,7 @@ class Header extends Component {
     }
     return (
       <header style = { userAuth ? darkTheme: lightTheme } >
-      <Link to = '/auth/login' className = 'logo'>
+      <Link to = '/' className = 'logo'>
         <img 
           src = { logoSrc } 
           className = 'logo-img' 
@@ -55,11 +55,9 @@ class Header extends Component {
         <div className = 'header-nav'>
           <button className = 'header-btn'>sell</button>
           <i className = "far fa-heart header-heart"></i> 
-          <div className = 'avatar-block' onClick = {this.foo}>
-              <img src="../../img/avatar.jpg" alt = "avatar" />
-          </div>
+          <Link to = '/profile' className = 'avatar-block'><img src="../../img/avatar.jpg" alt = "avatar" /></Link>
         </div>
-        <SearchBlock />
+        {/* <SearchBlock /> */}
         </>
                 :
         <div className = 'header-nav single'>

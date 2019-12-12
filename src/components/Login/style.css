@@ -1,4 +1,4 @@
-.login-form{
+.apiko-form {
     position: absolute;
     width: 320px;
     top:45%;
@@ -11,49 +11,26 @@
     rgba(0,0,0,0.111233);
 }
 
-.login-form-title{
+.apiko-form-title {
    text-align: center;
    margin: 0;
    font-size: 26px;
 }
 
-.login-form-label{
-    text-transform: uppercase;
-    font-size: 14px;
-}
 
-
-.login-form-input{
-    width: 95%;
-    background-color: #fff;
-    border: 1px solid #DEDEE0;
-    padding: 10px 7px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    outline: none;
-}
-
-.login-form-input:hover{
-    border-bottom: 1px solid rgb(59, 61, 61);
-}
-
-.login-form-input:focus{
-    border-bottom: 1px solid #349A89;
-}
-
-.login-form-helper{
+.apiko-form-helper {
     margin: 0;
     padding-right:3%; 
     text-align: right;
     color: #8c8c8c;
 }
 
-.login-form-helper:hover{
+.apiko-form-helper:hover {
     cursor: pointer;
     color: #000;
 }
 
-.login-form-btn{
+.apiko-form-btn {
     width: 97%;
     padding: 15px;
     margin: 15px 0;
@@ -66,7 +43,7 @@
     transition: all 0.3s ease;
 }
 
-.login-form-btn:hover{
+.apiko-form-btn:hover{
     cursor: pointer;
     color: #fff;
     background: rgb(18, 83, 72); 
@@ -130,7 +107,7 @@
 
 /* MEDIA QUERY */
 @media screen and (max-width: 425px){
-    .login-form{
+    .apiko-form {
         width: 280px;
     }
     .register-block{
