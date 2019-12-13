@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Rodal from 'rodal';
-import { store } from '../../index';
 import { getUser } from '../../modules/user/selectors';
 import { getTours } from '../../modules/tours/selectors';
 import { getSearch } from '../../modules/search/selectors';
 import { isLoading } from '../../modules/isLoading/selectors';
-import { getMainError } from '../../modules/mainError/selectors';
+import { getMainMessage } from '../../modules/mainMessage/selectors';
 import { fetchTours } from '../../modules/tours';
 import TourItem from '../TourItem';
 import TourMockItem from '../TourMockItem';
-import 'rodal/lib/rodal.css';
+import MainModal from '../MainModal';
 import './style.css';
 
 
 class TourMarket extends Component {
   constructor(props) {
     super();
-    this.state = {
-      visible: false,
-    };
     this.componentDidMount = () => {
       const { fetchTours } = this.props;
       fetchTours();
-      store.subscribe(this.errorObserver);
     };
     this.renderTours = (item) => {
       const { searchQuery, searchLocation } = this.props.search;
@@ -45,23 +39,13 @@ class TourMarket extends Component {
       }
       return <TourItem key = {id} {...item} />;
     };
-    this.errorObserver = () => {
-      const { mainError } = this.props;
-      if (mainError) {
-        this.setState({ visible: true });
-      }
-    };
-    this.closeModal = () => {
-      this.setState({ visible: false });
-    };
   }
 
   render() {
-    const { visible } = this.state;
     const {
       isLoading,
       arrOfItem,
-      mainError,
+      mainMessage,
     } = this.props;
     // Prop for modal window
     const w = 300;
@@ -69,13 +53,11 @@ class TourMarket extends Component {
     return (
             <>
             <div className = 'tour-market-container'>
-            { arrOfItem !== 0 && !isLoading && mainError === null
+            { arrOfItem.length !== 0 && !isLoading
               ? arrOfItem.map(this.renderTours)
               : <TourMockItem />}
             </div>
-            <Rodal visible = {visible} animation = {'rotate'} duration = {500} wigth = {w} height = {h} onClose = {this.closeModal} >
-                <div className = 'tour-market-modal-error'>{mainError}</div>
-            </Rodal>
+            <MainModal />
             </>
     );
   }
@@ -86,5 +68,5 @@ export default connect(state => ({
   arrOfItem: getTours(state),
   search: getSearch(state),
   isLoading: isLoading(state),
-  mainError: getMainError(state),
+  mainMessage: getMainMessage(state),
 }), { fetchTours })(TourMarket);

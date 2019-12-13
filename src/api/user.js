@@ -6,7 +6,6 @@ const isEmailUnique = ({ email }) => (
     .then(({ data }) => data)
     .catch(({ response }) => {
       const { status, msg } = response.data;
-      console.error(msg);
       return status;
     })
 );
@@ -17,7 +16,6 @@ const addNewUser = ({ email, fullName, password }) => (
     .then(({ data }) => data)
     .catch(({ response }) => {
       const { status, msg } = response.data;
-      console.error(msg);
       return { status, msg };
     })
 );
@@ -28,7 +26,6 @@ const getUserByEmail = ({ email }) => (
     .then(({ data }) => data)
     .catch(({ response }) => {
       const { status, msg } = response.data;
-      console.error(msg);
       return { status, user: {} };
     })
 );
@@ -46,8 +43,8 @@ const singInById = ({ id }) => (
     .catch(() => false)
 );
 
-const getItemList = () => (
-  axios.get('/itemList')
+const changeUserInfo = userData => (
+  axios.patch('/profile', { userData })
     .then(({ data }) => data)
     .catch((err) => {
       throw new Error(err.message);
@@ -61,5 +58,5 @@ export {
   getUserByEmail,
   isPassValid,
   singInById,
-  getItemList,
+  changeUserInfo,
 };

@@ -17,8 +17,7 @@ const Router = () => (
           <Route path = '/auth/login' component = { Login } exact/>
           <Route path = '/auth/registration' component = { Register} exact/>
           <PrivateRoute path = '/' component = { TourMarket } exact/>
-          <Route path = '/profile' component = { Profile } exact/>
-          {/* <PrivateRoute path = '/profile' component = { Profile } exact/> */}
+          <PrivateRoute path = '/profile' component = { Profile } exact/>
           <Redirect to = '/auth/login' exact />
       </Switch>
     </BrowserRouter>

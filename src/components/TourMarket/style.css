@@ -10,10 +10,6 @@
   overflow-x: hidden;
 }
 
-.tour-market-modal-error {
-  margin-top: 30px;
-  text-align: center;
-}
 
 .tour-market-container::-webkit-scrollbar-track
 {
