@@ -4,7 +4,6 @@ import { getUser } from '../../modules/user/selectors';
 import { getTours } from '../../modules/tours/selectors';
 import { getSearch } from '../../modules/search/selectors';
 import { isLoading } from '../../modules/isLoading/selectors';
-import { getMainMessage } from '../../modules/mainMessage/selectors';
 import { fetchTours } from '../../modules/tours';
 import TourItem from '../TourItem';
 import TourMockItem from '../TourMockItem';
@@ -45,11 +44,7 @@ class TourMarket extends Component {
     const {
       isLoading,
       arrOfItem,
-      mainMessage,
     } = this.props;
-    // Prop for modal window
-    const w = 300;
-    const h = 100;
     return (
             <>
             <div className = 'tour-market-container'>
@@ -68,5 +63,4 @@ export default connect(state => ({
   arrOfItem: getTours(state),
   search: getSearch(state),
   isLoading: isLoading(state),
-  mainMessage: getMainMessage(state),
 }), { fetchTours })(TourMarket);

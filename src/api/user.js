@@ -4,10 +4,7 @@ import axios from 'axios';
 const isEmailUnique = ({ email }) => (
   axios.get(`/auth/registration/email?email=${email}`)
     .then(({ data }) => data)
-    .catch(({ response }) => {
-      const { status, msg } = response.data;
-      return status;
-    })
+    .catch(({ response }) => response.data.status)
 );
 
 
@@ -25,7 +22,7 @@ const getUserByEmail = ({ email }) => (
   axios.get(`/auth/login/email?email=${email}`)
     .then(({ data }) => data)
     .catch(({ response }) => {
-      const { status, msg } = response.data;
+      const { status } = response.data;
       return { status, user: {} };
     })
 );

@@ -57,7 +57,7 @@ class Header extends Component {
           <i className = "far fa-heart header-heart"></i> 
           <Link to = '/profile' className = 'avatar-block'><img src="../../img/avatar.jpg" alt = "avatar" /></Link>
         </div>
-        {/* <SearchBlock /> */}
+        <SearchBlock />
         </>
                 :
         <div className = 'header-nav single'>

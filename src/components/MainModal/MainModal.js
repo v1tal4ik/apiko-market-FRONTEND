@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Rodal from 'rodal';
 import { connect } from 'react-redux';
-import { store } from '../../index';
 import { resetMainMessage } from '../../modules/mainMessage/actions';
 import { getMainMessage, getMainMessageVisible } from '../../modules/mainMessage/selectors';
 import 'rodal/lib/rodal.css';
