@@ -4,11 +4,7 @@ import axios from 'axios';
 const isEmailUnique = ({ email }) => (
   axios.get(`/auth/registration/email?email=${email}`)
     .then(({ data }) => data)
-    .catch(({ response }) => {
-      const { status, msg } = response.data;
-      console.error(msg);
-      return status;
-    })
+    .catch(({ response }) => response.data.status)
 );
 
 
@@ -17,7 +13,6 @@ const addNewUser = ({ email, fullName, password }) => (
     .then(({ data }) => data)
     .catch(({ response }) => {
       const { status, msg } = response.data;
-      console.error(msg);
       return { status, msg };
     })
 );
@@ -27,8 +22,7 @@ const getUserByEmail = ({ email }) => (
   axios.get(`/auth/login/email?email=${email}`)
     .then(({ data }) => data)
     .catch(({ response }) => {
-      const { status, msg } = response.data;
-      console.error(msg);
+      const { status } = response.data;
       return { status, user: {} };
     })
 );
@@ -46,8 +40,8 @@ const singInById = ({ id }) => (
     .catch(() => false)
 );
 
-const getItemList = () => (
-  axios.get('/itemList')
+const changeUserInfo = userData => (
+  axios.patch('/profile', { userData })
     .then(({ data }) => data)
     .catch((err) => {
       throw new Error(err.message);
@@ -61,5 +55,5 @@ export {
   getUserByEmail,
   isPassValid,
   singInById,
-  getItemList,
+  changeUserInfo,
 };

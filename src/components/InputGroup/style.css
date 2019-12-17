@@ -1,0 +1,23 @@
+.apiko-form-label {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+
+.apiko-form-input {
+  width: 95%;
+  background-color: #fff;
+  border: 1px solid #DEDEE0;
+  padding: 10px 7px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  outline: none;
+}
+
+.apiko-form-input:hover{
+  border-bottom: 1px solid rgb(59, 61, 61);
+}
+
+.apiko-form-input:focus{
+  border-bottom: 1px solid #349A89;
+}

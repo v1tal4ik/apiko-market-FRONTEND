@@ -14,10 +14,10 @@ const InputGroup = ({
   status,
   isRequired,
 }) => <>
-  <label className = 'login-form-label'>{ label }</label>
+  <label className = 'apiko-form-label'>{ label }</label>
   { isRequired
     ? <input
-      className = "login-form-input"
+      className = "apiko-form-input"
       type = { type }
       name = { name }
       placeholder = { placeholder }
@@ -27,7 +27,7 @@ const InputGroup = ({
       required
       />
     : <input
-      className = "login-form-input"
+      className = "apiko-form-input"
       type = { type }
       name = { name }
       placeholder = { placeholder }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Select } from 'antd';
+import { withRouter } from 'react-router';
 import { changeSearch, resetSearch } from '../../modules/search';
 import './antd-select.css';
 import './style.css';
@@ -70,31 +71,32 @@ class SearchBlock extends Component {
   render() {
     const { searchQuery, searchLocation, wasKeyDown } = this.state;
     const isVisible = wasKeyDown ? 'inline-block' : 'none';
+    const isComponentVisible = this.props.location.pathname === '/';
     return (
-      <form className = 'search-block'>
-        <i className = 'fas fa-search search-icon' aria-hidden = 'true'></i>
-        <input
-          type = 'text'
-          className = 'search-input'
-          name = 'searchQuery'
-          value = {searchQuery}
-          onChange = {this.handleChangeInput}
-          placeholder = 'Search products by name'
-        />
-        <Select
-            optionFilterProp = 'children'
-            defaultValue = 'Location'
-            name = 'location'
-            value = {searchLocation}
-            onChange = {this.handleChangeLocation}
-            >
-            {arrOfContinent.map((item, index) => <Option key = {index} value={item.value}>{item.text}</Option>)}
-        </Select>
-        <button className = 'search-btn' onClick = {this.handleClickSearch}>search</button>
-        <button className = 'search-btn' style = {{ display: isVisible }} onClick = {this.handleClickReset}>reset</button>
-      </form>
+      isComponentVisible ? <form className = 'search-block'>
+      <i className = 'fas fa-search search-icon' aria-hidden = 'true'></i>
+      <input
+        type = 'text'
+        className = 'search-input'
+        name = 'searchQuery'
+        value = {searchQuery}
+        onChange = {this.handleChangeInput}
+        placeholder = 'Search products by name'
+      />
+      <Select
+          optionFilterProp = 'children'
+          defaultValue = 'Location'
+          name = 'location'
+          value = {searchLocation}
+          onChange = {this.handleChangeLocation}
+          >
+          {arrOfContinent.map((item, index) => <Option key = {index} value={item.value}>{item.text}</Option>)}
+      </Select>
+      <button className = 'search-btn' onClick = {this.handleClickSearch}>search</button>
+      <button className = 'search-btn' style = {{ display: isVisible }} onClick = {this.handleClickReset}>reset</button>
+    </form> : null
     );
   }
 }
 
-export default connect(() => ({}), { changeSearch, resetSearch })(SearchBlock);
+export default connect(() => ({}), { changeSearch, resetSearch })(withRouter(SearchBlock));
