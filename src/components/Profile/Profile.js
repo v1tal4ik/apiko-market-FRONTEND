@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { store } from '../../index';
 import { changeUser } from '../../modules/user';
+import { setMainMessage } from '../../modules/mainMessage/actions';
 import { getUser } from '../../modules/user/selectors';
 import InputGroup from '../InputGroup';
 import MainModal from '../MainModal';
+import { saveProfileImg } from '../../api/user';
 import './style.css';
 
 const initialState = {
@@ -12,6 +14,7 @@ const initialState = {
     id: 0,
     fullName: '',
     phone: '',
+    img: '',
   },
   check: {
     fullName: '',
@@ -20,6 +23,7 @@ const initialState = {
   status: {
     fullName: '',
     phone: '',
+    img: '',
   },
 };
 
@@ -32,16 +36,28 @@ class Profile extends Component {
       store.subscribe(this.setUserToState);
     };
     this.setUserToState = () => {
-      const { id, fullName, phone } = this.props.user;
+      const {
+        id, fullName, phone, img,
+      } = this.props.user;
       const { data } = this.state;
-      if (data.fullName !== fullName || data.phone !== phone) {
-        this.setState({ data: { fullName, phone, id } });
+      if (data.fullName !== fullName || data.phone !== phone || data.img !== img) {
+        this.setState({
+          data: {
+            fullName, phone, id, img,
+          },
+        });
       }
     };
     this.handleChangeInput = ({ target: { name, value } }) => (this.setState({ data: { ...this.state.data, [name]: value } }));
-    this.handleChangeImage = () => {
-      // next task "image" add code
-      console.log('work change image');
+    this.handleChangeImage = async ({ target }) => {
+      const { setMainMessage } = this.props;
+      const img = target.files[0];
+      const result = await saveProfileImg(img);
+      if (result) {
+        return this.setState({ data: { ...this.state.data, img: result.url }, status: { ...this.state.status, img: true } });
+      }
+      this.setState({ status: { ...this.state.status, img: false } });
+      setMainMessage(result.message);
     };
     this.checkFullName = ({ target: { value: name } }) => {
       const exp = /[^A-Za-z\d][ ]/;
@@ -63,7 +79,7 @@ class Profile extends Component {
       e.preventDefault();
       const { data, status } = this.state;
       const { changeUser } = this.props;
-      if (!status.fullName && !status.phone) { return; }
+      if (!status.fullName && !status.phone && !status.img) { return; }
       changeUser(data);
     };
   }
@@ -75,9 +91,9 @@ class Profile extends Component {
       <form className = 'apiko-form profile'>
         <p className = 'apiko-form-title'>Edit Profile</p>
         <div className = 'profile-img'>
-          <img src = '../../img/sea.jpg' alt = 'avatar'/>
+          <img src = {data.img} alt = 'avatar'/>
         </div>
-        <input type = 'file' name = 'img' id = 'file' onChange = {this.handleChangeImage} />
+        <input type = 'file' name = 'img' id = 'file' accept = 'image/*' onChange = {this.handleChangeImage} />
         <label htmlFor = 'file' className = 'btn-2'>Upload</label>
         <InputGroup
           label = "Full Name"
@@ -113,4 +129,4 @@ class Profile extends Component {
 
 export default connect(state => ({
   user: getUser(state),
-}), { changeUser })(Profile);
+}), { changeUser, setMainMessage })(Profile);
