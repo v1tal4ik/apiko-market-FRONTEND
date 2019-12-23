@@ -3,6 +3,32 @@
     top:55%;
 }
 
+.register-block {
+    position: absolute;
+    width: 345px;
+    bottom:5%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border-radius:7px;
+    box-shadow:0px 2px 42px 
+    rgba(0,0,0,0.111233);
+    transition: all 0.3s ease;
+}
+
+.register-block span {
+    text-transform: uppercase;
+    color: #349A89;
+}
+
+.register-block span:hover {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
 .log-in {
     text-align: center;
 }
@@ -18,7 +44,7 @@
     font-size: 15px;
 }
 
-.apiko-form-label span{
+.apiko-form-label span {
     text-transform: lowercase;
     font-size: 12px;
     color:#8c8c8c;
