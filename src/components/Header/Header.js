@@ -6,8 +6,6 @@ import { getUser } from '../../modules/user/selectors';
 import { store } from '../../index';
 import './style.css';
 
-// Path for img when I use server static file 
-// src='./img/logo.png'
 
 
 class Header extends Component {
@@ -55,7 +53,11 @@ class Header extends Component {
         <div className = 'header-nav'>
           <button className = 'header-btn'>sell</button>
           <i className = "far fa-heart header-heart"></i> 
-          <Link to = '/profile' className = 'avatar-block'><img src="../../img/avatar.jpg" alt = "avatar" /></Link>
+          <Link 
+            to = '/profile' 
+            className = 'avatar-block'>
+            <img src = {this.props.user.img} alt = "avatar" />
+          </Link>
         </div>
         <SearchBlock />
         </>

@@ -16,6 +16,7 @@ const user = handleActions({
     ...state,
     fullName: action.payload.fullName,
     phone: action.payload.phone,
+    img: action.payload.img,
   }),
   [changeUserFailure]: state => state,
 }, {});

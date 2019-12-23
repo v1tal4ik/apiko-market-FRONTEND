@@ -1,5 +1,5 @@
 import { FETCH_TOURS_FAILURE, FETCH_TOURS } from '../tours/actions';
-import { RESET_MAIN_MESSAGE } from './actions';
+import { RESET_MAIN_MESSAGE, SET_MAIN_MESSAGE } from './actions';
 
 
 const initialState = {
@@ -9,6 +9,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_TOURS:
+      return initialState;
     case FETCH_TOURS_FAILURE:
       return {
         visible: true,
@@ -24,8 +26,11 @@ export default (state = initialState, action) => {
         visible: true,
         msg: action.payload,
       };
-    case FETCH_TOURS:
-      return initialState;
+    case SET_MAIN_MESSAGE:
+      return {
+        visible: true,
+        msg: action.payload,
+      };
     case RESET_MAIN_MESSAGE:
       return initialState;
     default:

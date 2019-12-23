@@ -5,8 +5,10 @@ import { changeUserInfo } from '../../api/index';
 
 export function* fetchUserFlow(action) {
   try {
-    const { msg, fullName, phone } = yield call(changeUserInfo, action.payload);
-    yield put(changeUserSuccess({ msg, fullName, phone }));
+    // eslint-disable-next-line object-curly-newline
+    const { msg, fullName, phone, img } = yield call(changeUserInfo, action.payload);
+    // eslint-disable-next-line object-curly-newline
+    yield put(changeUserSuccess({ msg, fullName, phone, img }));
   } catch (error) {
     yield put(changeUserFailure(error.message));
   }

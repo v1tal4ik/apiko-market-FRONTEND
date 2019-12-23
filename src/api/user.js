@@ -49,6 +49,18 @@ const changeUserInfo = userData => (
 );
 
 
+const saveProfileImg = (img) => {
+  const formData = new FormData();
+  formData.append('profile-img', img, img.name);
+  return axios.post('/profile/img', formData)
+    .then(({ data }) => data)
+    .catch(({ message }) => ({
+      status: false,
+      message,
+    }));
+};
+
+
 export {
   isEmailUnique,
   addNewUser,
@@ -56,4 +68,5 @@ export {
   isPassValid,
   singInById,
   changeUserInfo,
+  saveProfileImg,
 };
