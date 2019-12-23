@@ -54,7 +54,10 @@ class Profile extends Component {
       const img = target.files[0];
       const result = await saveProfileImg(img);
       if (result) {
-        return this.setState({ data: { ...this.state.data, img: result.url }, status: { ...this.state.status, img: true } });
+        return this.setState({
+          data: { ...this.state.data, img: result.url },
+          status: { ...this.state.status, img: true },
+        });
       }
       this.setState({ status: { ...this.state.status, img: false } });
       setMainMessage(result.message);

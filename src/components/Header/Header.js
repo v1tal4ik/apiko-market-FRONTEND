@@ -53,7 +53,11 @@ class Header extends Component {
         <div className = 'header-nav'>
           <button className = 'header-btn'>sell</button>
           <i className = "far fa-heart header-heart"></i> 
-          <Link to = '/profile' className = 'avatar-block'><img src = {this.props.user.img} alt = "avatar" /></Link>
+          <Link 
+            to = '/profile' 
+            className = 'avatar-block'>
+            <img src = {this.props.user.img} alt = "avatar" />
+          </Link>
         </div>
         <SearchBlock />
         </>
