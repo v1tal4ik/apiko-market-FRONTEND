@@ -1,0 +1,73 @@
+.add-tour {
+  width: 520px;
+  top:56%;
+  padding: 15px 100px;
+}
+
+.location-select {
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.location-select > div {
+  width: 98%;
+  outline: none;
+  color: #000;
+}
+
+.location-select > div:hover {
+  border: 1px solid #349A89;
+}
+
+.set-location, .description {
+  margin-bottom: 10px;
+}
+.set-location label, .description label {
+  display: block;
+}
+
+.description textarea {
+  width: 97.5%;
+  border: 1px solid #DEDEE0;
+  transition: 0.3s ease;
+  outline: none;
+}
+
+.description textarea:hover{
+  border-bottom: 1px solid rgb(59, 61, 61);
+}
+
+.description textarea:focus{
+  border-bottom: 1px solid #349A89;
+}
+
+.set-image {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.proto-image {
+  width:20%;
+  margin-right: 15px;
+}
+
+.images-inpt {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+  display: block;
+}
+
+.images-inpt + label {
+  background: #c9c9c9;
+  color: #349A89;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 35px;
+  outline: none;
+  transition: all 0.3s;
+  margin: 0;
+}
+.images-inpt + label:hover {
+  background-color: #dbdbdb;
+}
