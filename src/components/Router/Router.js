@@ -8,16 +8,19 @@ import Login from '../Login';
 import Register from '../Register';
 import TourMarket from '../TourMarket';
 import Profile from '../Profile';
+import Sell from '../Sell';
 
 const Router = () => (
   <>
     <BrowserRouter>
       <Header />
       <Switch>
-          <Route path = '/auth/login' component = { Login } exact/>
-          <Route path = '/auth/registration' component = { Register} exact/>
-          <PrivateRoute path = '/' component = { TourMarket } exact/>
-          <PrivateRoute path = '/profile' component = { Profile } exact/>
+          <Route path = '/auth/login' component = { Login } exact />
+          <Route path = '/auth/registration' component = { Register} exact />
+          <PrivateRoute path = '/' component = { TourMarket } exact />
+          <PrivateRoute path = '/profile' component = { Profile } exact />
+          {/* <PrivateRoute path = '/sell' component = { Sell } exact /> */}
+          <Route path = '/sell' component = { Sell } exact />
           <Redirect to = '/auth/login' exact />
       </Switch>
     </BrowserRouter>

@@ -15,6 +15,7 @@ const initialState = {
   searchQuery: '',
   searchLocation: 'Location',
 };
+
 export const arrOfContinent = [
   {
     value: 'asia',

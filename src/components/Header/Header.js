@@ -51,7 +51,9 @@ class Header extends Component {
       { userAuth ?
       <>
         <div className = 'header-nav'>
-          <button className = 'header-btn'>sell</button>
+          <Link to = '/sell' className = 'header-btn'>
+            sell
+          </Link>
           <i className = "far fa-heart header-heart"></i> 
           <Link 
             to = '/profile' 
