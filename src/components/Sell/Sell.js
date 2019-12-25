@@ -85,13 +85,31 @@ class Sell extends Component {
 
           <div className = 'description'>
             <label className = 'apiko-form-label'>Description</label>
-            <textarea cols = '20' rows = '5' name = 'description' value = {description} onChange = {this.handleChangeInput} required></textarea>
+            <textarea
+            cols = '20'
+            rows = '5'
+            name = 'description'
+            value = {description}
+            onChange = {this.handleChangeInput}
+            required />
           </div>
 
           <span className = 'apiko-form-label'>Photos</span>
           <div className = 'set-image'>
-            <img className = "proto-image" src = {img} style = {{ display: isImgVisible }} alt = "tour"/>
-            <input type = 'file' className = 'images-inpt' name = 'img' id = 'file' accept = 'image/*' onChange = {this.handleChangeImage} />
+            <img
+              className = "proto-image"
+              src = {img}
+              style = {{ display: isImgVisible }}
+              alt = "tour"
+            />
+            <input
+              type = 'file'
+              className = 'images-inpt'
+              name = 'img'
+              id = 'file'
+              accept = 'image/*'
+              onChange = {this.handleChangeImage}
+             />
             <label htmlFor = 'file' style = {{ display: isImgVisible === 'block' ? 'none' : 'block' }} >+</label>
           </div>
 
@@ -104,7 +122,12 @@ class Sell extends Component {
             onBlurFunc = { this.checkPass }
             isRequired
             />
-          <button className = 'apiko-form-btn' style = {{ margin: '0' }} onClick = {this.handleSubmit}>Submit</button>
+          <button
+            className = 'apiko-form-btn'
+            style = {{ margin: '0' }}
+            onClick = {this.handleSubmit} >
+            Submit
+           </button>
       </form>
       <MainModal />
       </>
