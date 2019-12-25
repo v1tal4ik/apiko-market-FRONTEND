@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { store } from '../../index';
 import { changeUser } from '../../modules/user';
 import { setMainMessage } from '../../modules/mainMessage/actions';

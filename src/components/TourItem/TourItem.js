@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../../modules/user/selectors';
-import { addTourToFav } from '../../modules/user';
-import { removeTourFromFav } from '../../modules/user';
+import { addTourToFav, removeTourFromFav } from '../../modules/user';
+
 import './style.css';
 
 
@@ -15,17 +15,14 @@ class TourItem extends Component {
     this.componentDidMount = () => {
       const { id } = this.props.tour;
       const { favProducts } = this.props.user;
-      this.setState({ view : favProducts.includes(id) ?'bold':'normal'});
+      this.setState({ view: favProducts.includes(id) ? 'bold' : 'normal' });
     };
     this.toggleTourOfFavList = ({ target }) => {
       const idTour = target.getAttribute('data-id');
-      if (this.state.view === 'normal') {
-        this.setState({ view: 'bold' });
-        this.props.addTourToFav(idTour);
-      } else {
-        this.setState({ view: 'normal' });
-        this.props.removeTourFromFav(idTour);
-      }
+      const { addTourToFav, removeTourFromFav } = this.props;
+      const { view } = this.state;
+      this.setState({ view: view === 'normal' ? 'bold' : 'normal' });
+      view === 'normal' ? addTourToFav(idTour) : removeTourFromFav(idTour);
     };
   }
 
@@ -52,4 +49,4 @@ class TourItem extends Component {
 
 export default connect(state => ({
   user: getUser(state),
-}), { addTourToFav,removeTourFromFav })(TourItem);
+}), { addTourToFav, removeTourFromFav })(TourItem);
