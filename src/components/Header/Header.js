@@ -54,7 +54,9 @@ class Header extends Component {
           <Link to = '/sell' className = 'header-btn'>
             sell
           </Link>
+          <Link to = '/fav-tours'>
           <i className = "far fa-heart header-heart"></i> 
+          </Link>
           <Link 
             to = '/profile' 
             className = 'avatar-block'>

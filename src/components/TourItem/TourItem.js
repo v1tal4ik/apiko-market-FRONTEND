@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUser } from '../../modules/user/selectors';
+import { addTourToFav } from '../../modules/user';
+import { removeTourFromFav } from '../../modules/user';
 import './style.css';
 
 
-// eslint-disable-next-line object-curly-newline
-const TourItem = ({ id, name, price, img }) => <>
-    <div className = "tour-item" data-id = {id}>
-        <img src = { img } alt = "icon"/>
-        <i className = "far fa-heart item-heart" data-id = {id}></i>
-        <h5 className = "tour-title">{ name }</h5>
-        <h4 className = "tour-price">{ price }$</h4>
-    </div>
-    </>;
+class TourItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: '',
+    };
+    this.componentDidMount = () => {
+      const { id } = this.props.tour;
+      const { favProducts } = this.props.user;
+      this.setState({ view : favProducts.includes(id) ?'bold':'normal'});
+    };
+    this.toggleTourOfFavList = ({ target }) => {
+      const idTour = target.getAttribute('data-id');
+      if (this.state.view === 'normal') {
+        this.setState({ view: 'bold' });
+        this.props.addTourToFav(idTour);
+      } else {
+        this.setState({ view: 'normal' });
+        this.props.removeTourFromFav(idTour);
+      }
+    };
+  }
 
+  render() {
+    // eslint-disable-next-line object-curly-newline
+    const { id, img, name, price } = this.props.tour;
+    return (
+        <>
+        <div className = "tour-item" data-id = {id}>
+            <img src = { img } alt = "icon"/>
+            <i
+            className = "far fa-heart item-heart"
+            style = {{ fontWeight: this.state.view }}
+            data-id = {id}
+            onClick = {this.toggleTourOfFavList}
+            ></i>
+            <h5 className = "tour-title">{ name }</h5>
+            <h4 className = "tour-price">{ price }$</h4>
+        </div>
+        </>
+    );
+  }
+}
 
-export default TourItem;
+export default connect(state => ({
+  user: getUser(state),
+}), { addTourToFav,removeTourFromFav })(TourItem);

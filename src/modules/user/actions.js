@@ -7,3 +7,6 @@ export const userAuth = createAction('USER/AUTH');
 export const changeUser = createAction('USER/CHANGE');
 export const changeUserSuccess = createAction('USER/CHANGE_SUCCESS');
 export const changeUserFailure = createAction('USER/CHANGE_FAILURE');
+
+export const addTourToFav = createAction('USER/ADD_TOUR_TO_FAV');
+export const removeTourFromFav = createAction('USER/REMOVE_TOUR_FROM_FAV');
