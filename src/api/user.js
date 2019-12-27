@@ -48,7 +48,6 @@ const changeUserInfo = userData => (
     })
 );
 
-
 const saveProfileImg = (img) => {
   const formData = new FormData();
   formData.append('profile-img', img, img.name);
@@ -60,6 +59,13 @@ const saveProfileImg = (img) => {
     }));
 };
 
+const updateUserFavList = dataUser => (
+  axios.patch('/profile/fav-tours', dataUser)
+    .catch((err) => {
+      console.error(err.message);
+    })
+);
+
 
 export {
   isEmailUnique,
@@ -69,4 +75,5 @@ export {
   singInById,
   changeUserInfo,
   saveProfileImg,
+  updateUserFavList,
 };

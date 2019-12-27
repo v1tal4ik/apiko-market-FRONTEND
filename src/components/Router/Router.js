@@ -9,6 +9,7 @@ import Register from '../Register';
 import TourMarket from '../TourMarket';
 import Profile from '../Profile';
 import Sell from '../Sell';
+import FavTours from '../FavTours';
 
 const Router = () => (
   <>
@@ -19,8 +20,8 @@ const Router = () => (
           <Route path = '/auth/registration' component = { Register} exact />
           <PrivateRoute path = '/' component = { TourMarket } exact />
           <PrivateRoute path = '/profile' component = { Profile } exact />
-          {/* <PrivateRoute path = '/sell' component = { Sell } exact /> */}
-          <Route path = '/sell' component = { Sell } exact />
+          <PrivateRoute path = '/sell' component = { Sell } exact />
+          <PrivateRoute path = '/fav-tours' component = { FavTours } exact />
           <Redirect to = '/auth/login' exact />
       </Switch>
     </BrowserRouter>

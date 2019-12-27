@@ -5,6 +5,7 @@ import { getTours } from '../../modules/tours/selectors';
 import { getSearch } from '../../modules/search/selectors';
 import { isLoading } from '../../modules/isLoading/selectors';
 import { fetchTours } from '../../modules/tours';
+import { updateUserFavList } from '../../api';
 import TourItem from '../TourItem';
 import TourMockItem from '../TourMockItem';
 import MainModal from '../MainModal';
@@ -24,19 +25,23 @@ class TourMarket extends Component {
 
       if (searchQuery && searchLocation) {
         if (name.includes(searchQuery) && item.location.includes(searchLocation)) {
-          return <TourItem key = {id} {...item} />;
+          return <TourItem key = {id} tour = {item} />;
         }
         return null;
       }
 
       if (searchQuery) {
-        return name.includes(searchQuery) ? <TourItem key = {id} {...item} /> : null;
+        return name.includes(searchQuery) ? <TourItem key = {id} tour = {item} /> : null;
       }
 
       if (searchLocation) {
-        return location.includes(searchLocation) ? <TourItem key = {id} {...item} /> : null;
+        return location.includes(searchLocation) ? <TourItem key = {id} tour = {item} /> : null;
       }
-      return <TourItem key = {id} {...item} />;
+      return <TourItem key = {id} tour = {item} />;
+    };
+    this.componentWillUnmount = async () => {
+      const { id, favProducts } = this.props.user;
+      await updateUserFavList({ id, favProducts });
     };
   }
 
