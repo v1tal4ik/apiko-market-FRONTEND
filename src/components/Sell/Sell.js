@@ -38,8 +38,7 @@ class Sell extends Component {
       } = this.state;
       const { setMainMessage } = this.props;
       const sellerId = this.props.user.id;
-      const time = new Date();
-      const date = `${time.getFullYear()}-${time.getMonth()}-${time.getDay()}`;
+      const date = Date.now();
       if (name && location && description && img && price) {
         e.preventDefault();
         const result = await addNewTour({ sellerId, date, ...this.state });

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { getUser } from '../../modules/user/selectors';
 import { addTourToFav, removeTourFromFav } from '../../modules/user';
 
@@ -24,6 +25,12 @@ class TourItem extends Component {
       this.setState({ view: view === 'normal' ? 'bold' : 'normal' });
       view === 'normal' ? addTourToFav(idTour) : removeTourFromFav(idTour);
     };
+    this.handleClickOfTour = ({ target }) => {
+      if (target.tagName !== 'I') {
+        const id = target.parentNode.getAttribute('data-id');
+        this.props.history.push(`/tour:${id}`);
+      }
+    };
   }
 
   render() {
@@ -31,7 +38,11 @@ class TourItem extends Component {
     const { id, img, name, price } = this.props.tour;
     return (
         <>
-        <div className = "tour-item" data-id = {id}>
+        <div
+        className = "tour-item"
+        data-id = {id}
+        onClick = {this.handleClickOfTour}
+        >
             <img src = { img } alt = "icon"/>
             <i
             className = "far fa-heart item-heart"
@@ -49,4 +60,4 @@ class TourItem extends Component {
 
 export default connect(state => ({
   user: getUser(state),
-}), { addTourToFav, removeTourFromFav })(TourItem);
+}), { addTourToFav, removeTourFromFav })(withRouter(TourItem));

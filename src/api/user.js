@@ -18,6 +18,12 @@ const addNewUser = ({ email, fullName, password }) => (
 );
 
 // login
+const getUserById = id => (
+  axios.get(`/profile?id=${id}`)
+    .then(({ data }) => data)
+    .catch(() => ({ status: false, user: {} }))
+);
+
 const getUserByEmail = ({ email }) => (
   axios.get(`/auth/login/email?email=${email}`)
     .then(({ data }) => data)
@@ -70,6 +76,7 @@ const updateUserFavList = dataUser => (
 export {
   isEmailUnique,
   addNewUser,
+  getUserById,
   getUserByEmail,
   isPassValid,
   singInById,

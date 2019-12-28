@@ -10,6 +10,7 @@ import TourMarket from '../TourMarket';
 import Profile from '../Profile';
 import Sell from '../Sell';
 import FavTours from '../FavTours';
+import InfoOfTour from '../InfoOfTour';
 
 const Router = () => (
   <>
@@ -22,6 +23,7 @@ const Router = () => (
           <PrivateRoute path = '/profile' component = { Profile } exact />
           <PrivateRoute path = '/sell' component = { Sell } exact />
           <PrivateRoute path = '/fav-tours' component = { FavTours } exact />
+          <PrivateRoute path = '/tour:id' component = { InfoOfTour } exact />
           <Redirect to = '/auth/login' exact />
       </Switch>
     </BrowserRouter>
