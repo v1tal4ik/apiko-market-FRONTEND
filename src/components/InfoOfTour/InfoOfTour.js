@@ -4,7 +4,6 @@ import moment from 'moment';
 import { getTours } from '../../modules/tours/selectors';
 import { getUser } from '../../modules/user/selectors';
 import { getUserById, updateUserFavList } from '../../api';
-
 import { addTourToFav, removeTourFromFav } from '../../modules/user';
 import './style.css';
 
