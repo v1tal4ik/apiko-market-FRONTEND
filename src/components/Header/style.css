@@ -4,10 +4,6 @@ header {
     box-shadow: 0px 1px 10px 1px rgba(0,0,0,0.1) inset;
 }
 
-.logo {
-
-}
-
 
 .header-nav {
     position:absolute;
@@ -42,6 +38,40 @@ header {
     height: 100%;
     margin: 0;
     border-radius: 50%;
+}
+
+.profile-nav {
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    width:150px;
+    height: 80px;
+    background: #fff;
+    padding: 10px;
+    color: #349A89;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgb(34, 117, 103);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9;
+    transition: 0.5s ease;
+}
+
+.profile-nav-item {
+    text-decoration: none;
+    color: #349A89;
+    font-weight: 600;
+}
+
+.profile-nav-item:hover {
+    cursor: pointer;
+    color: rgb(52, 214, 187);
 }
 
 .header-btn {
