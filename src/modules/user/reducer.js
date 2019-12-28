@@ -3,6 +3,7 @@ import {
   fetchUserDataSuccess,
   fetchUserDataFailure,
   userAuth,
+  userLogOut,
   changeUserSuccess,
   changeUserFailure,
   addTourToFav,
@@ -14,6 +15,7 @@ const user = handleActions({
   [fetchUserDataSuccess]: (_state, action) => action.payload,
   [fetchUserDataFailure]: (_state, action) => action.payload,
   [userAuth]: (_state, action) => action.payload,
+  [userLogOut]: () => {},
   [changeUserSuccess]: (state, action) => ({
     ...state,
     fullName: action.payload.fullName,

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBlock from '../SearchBlock';
 import { connect } from 'react-redux';
+import SearchBlock from '../SearchBlock';
 import { getUser } from '../../modules/user/selectors';
+import { userLogOut } from '../../modules/user';
 import { store } from '../../index';
 import './style.css';
-
 
 
 class Header extends Component {
@@ -13,60 +13,94 @@ class Header extends Component {
     super();
     this.state = {
       userAuth: false,
+      profileNavDisplay: 'none',
+    };
+    this.userAuthObserver = () => {
+      if (this.props.user.isAuth) {
+        this.setState({ userAuth: true });
+      }
+    };
+    this.componentDidMount = () => {
+      store.subscribe(this.userAuthObserver);
+    };
+    this.handleClickProfileNav = () => {
+      this.setState({ profileNavDisplay: 'flex' });
+      setTimeout(() => {
+        this.setState({ profileNavDisplay: 'none' });
+      }, 3000);
+    };
+    this.handleLogOut = async () => {
+      this.handleCloseProfileNav();
+      await this.props.userLogOut();
+      this.setState({ userAuth: false });
+    };
+    this.handleCloseProfileNav = () => {
+      this.setState({ profileNavDisplay: 'none' });
     };
   }
 
-  userAuthObserver = () => {
-    if(this.props.user.isAuth){
-      this.setState({ userAuth: true });
-    }
-  }
-
-  componentDidMount = () => {
-    store.subscribe(this.userAuthObserver);
-  }
 
   render() {
-    const { userAuth } = this.state; 
-    const logoSrc = userAuth ? 
-          '../../img/logo-white.png' 
-          : '../../img/logo-dark.png';
+    const { userAuth, profileNavDisplay } = this.state;
+    const logoSrc = userAuth
+      ? '../../img/logo-white.png'
+      : '../../img/logo-dark.png';
     const lightTheme = {
-      color:'#000',
-      background:'#fff',
-    }
+      color: '#000',
+      background: '#fff',
+    };
     const darkTheme = {
-      color:'#fff',
-      background:'#000',
-    }
+      color: '#fff',
+      background: '#000',
+    };
     return (
-      <header style = { userAuth ? darkTheme: lightTheme } >
+      <header style = { userAuth ? darkTheme : lightTheme } >
       <Link to = '/' className = 'logo'>
-        <img 
-          src = { logoSrc } 
-          className = 'logo-img' 
-          alt = 'apiko' 
+        <img
+          src = { logoSrc }
+          className = 'logo-img'
+          alt = 'apiko'
           />
        </Link>
-      { userAuth ?
-      <>
+      { userAuth
+        ? <>
         <div className = 'header-nav'>
           <Link to = '/sell' className = 'header-btn'>
             sell
           </Link>
           <Link to = '/fav-tours'>
-          <i className = "far fa-heart header-heart"></i> 
+          <i className = "far fa-heart header-heart"></i>
           </Link>
-          <Link 
-            to = '/profile' 
-            className = 'avatar-block'>
-            <img src = {this.props.user.img} alt = "avatar" />
-          </Link>
+            <img
+              src = {this.props.user.img}
+              className = 'avatar-block'
+              onClick = {this.handleClickProfileNav}
+              alt = "avatar"
+            />
+        </div>
+        <div className = 'profile-nav' style={{ display: profileNavDisplay }}>
+        <Link
+          to = '/my-list'
+          className = 'profile-nav-item'
+          onClick = {this.handleCloseProfileNav}>
+          my List
+        </Link>
+        <Link
+          to = '/profile'
+          className = 'profile-nav-item'
+          onClick = {this.handleCloseProfileNav}>
+          edit profile
+        </Link>
+        <Link
+          to = '/auth/login'
+          className = 'profile-nav-item'
+          onClick = {this.handleLogOut}>
+          logout
+        </Link>
         </div>
         <SearchBlock />
         </>
-                :
-        <div className = 'header-nav single'>
+        : <div className = 'header-nav single'>
            <Link to = '/auth/login'><span>Login</span></Link>
         </div> }
       </header>
@@ -77,4 +111,4 @@ class Header extends Component {
 
 export default connect(state => ({
   user: getUser(state),
-}), {})(Header);
+}), { userLogOut })(Header);
