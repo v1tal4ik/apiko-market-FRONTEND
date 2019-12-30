@@ -6,9 +6,6 @@ import { changeSearch, resetSearch } from '../../modules/search';
 import './antd-select.css';
 import './style.css';
 
-// Path for img when I use server static file
-// src='./img/logo.png'
-
 const { Option } = Select;
 const initialState = {
   wasKeyDown: false,
@@ -48,15 +45,15 @@ class SearchBlock extends Component {
     super();
     this.state = initialState;
     this.handleChangeInput = ({ target: { name, value } }) => {
-      this.setState({ [name]: value.trim(), wasKeyDown: !!value });
+      this.setState({ [name]: value, wasKeyDown: !!value });
     };
     this.handleChangeLocation = searchLocation => this.setState({ searchLocation, wasKeyDown: true });
     this.handleClickSearch = (e) => {
       e.preventDefault();
       const { searchQuery, searchLocation } = this.state;
       const { changeSearch } = this.props;
-      if (searchQuery || searchLocation !== 'Location') {
-        const searchQueryProp = searchQuery || null;
+      if (searchQuery.trim() || searchLocation !== 'Location') {
+        const searchQueryProp = searchQuery.toUpperCase() || null;
         const searchLocationProp = searchLocation !== 'Location' ? searchLocation : null;
         changeSearch({ searchQuery: searchQueryProp, searchLocation: searchLocationProp });
       }
