@@ -17,7 +17,9 @@ const initialState = {
   description: '',
   img: '',
   price: '',
+  isLocation: true,
 };
+const NO_IMG_URL = 'https://res.cloudinary.com/v1tal4ik-cloud/image/upload/v1577205096/vxpyrzxeuqsn862nfiuj.png';
 
 class Sell extends Component {
   constructor(props) {
@@ -26,22 +28,40 @@ class Sell extends Component {
     this.handleChangeInput = ({ target: { name, value } }) => {
       this.setState({ ...this.state.data, [name]: value });
     };
-    this.handleChangeLocation = location => this.setState({ ...this.state.data, location });
+    this.handleChangeLocation = location => this.setState({ location, isLocation: true });
+    this.checkLocation = () => {
+      const { location } = this.state;
+      if (!location) {
+        this.setState({ isLocation: false });
+        return false;
+      }
+      return true;
+    };
     this.handleChangeImage = async ({ target }) => {
       const img = target.files[0];
       const result = await setTourImage(img);
       this.setState({ img: result.url });
     };
     this.handleSubmit = async (e) => {
-      const {
-        name, location, description, img, price,
-      } = this.state;
+    // eslint-disable-next-line object-curly-newline
+      const { name, location, description, price } = this.state;
+      let { img } = this.state;
       const { setMainMessage } = this.props;
       const sellerId = this.props.user.id;
       const date = Date.now();
-      if (name && location && description && img && price) {
+      if (name && description && price) {
         e.preventDefault();
-        const result = await addNewTour({ sellerId, date, ...this.state });
+        if (!img) { img = NO_IMG_URL; }
+        if (!this.checkLocation()) { return; }
+        const result = await addNewTour({
+          sellerId,
+          date,
+          name,
+          location,
+          description,
+          img,
+          price,
+        });
         setMainMessage(result.message);
         this.setState(initialState);
       }
@@ -51,9 +71,10 @@ class Sell extends Component {
   // eslint-disable-next-line class-methods-use-this
   render() {
     const {
-      location, description, price, img,
+      location, description, price, img, isLocation,
     } = this.state;
     const isImgVisible = img ? 'block' : 'none';
+    const borderColor = isLocation ? '#DEDEE0' : 'red';
     return (
       <>
       <form className = 'apiko-form add-tour'>
@@ -73,12 +94,20 @@ class Sell extends Component {
             <Select
               optionFilterProp = 'children'
               className = 'location-select'
+              style = {{ border: `1px solid ${borderColor}` }}
               defaultValue = ''
               name = 'location'
               value = {location}
               onChange = {this.handleChangeLocation}
               >
-              {arrOfContinent.map((item, index) => <Option key = {index} value={item.value}>{item.text}</Option>)}
+              {
+                arrOfContinent.map((item, index) => <Option
+                  key = {index}
+                  value={item.value}
+                  >
+                  {item.text}
+                </Option>)
+                }
             </Select>
           </div>
 

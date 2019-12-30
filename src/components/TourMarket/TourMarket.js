@@ -21,10 +21,11 @@ class TourMarket extends Component {
     };
     this.renderTours = (item) => {
       const { searchQuery, searchLocation } = this.props.search;
-      const { id, name, location } = item;
+      const { id, name: prevName, location } = item;
+      const name = prevName.toUpperCase();
 
       if (searchQuery && searchLocation) {
-        if (name.includes(searchQuery) && item.location.includes(searchLocation)) {
+        if (name.includes(searchQuery) && location.includes(searchLocation)) {
           return <TourItem key = {id} tour = {item} />;
         }
         return null;

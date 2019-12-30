@@ -25,13 +25,10 @@ class Login extends Component {
         password: '',
       },
     };
-  }
-
-  handleChangeInput = ({ target: { name, value } }) => {
+    this.handleChangeInput = ({ target: { name, value } }) => {
       this.setState({ data: { ...this.state.data, [name]: value } });
     };
-
-  checkEmail = async (e) => {
+    this.checkEmail = async () => {
       const { email } = this.state.data;
       const { fetchUserDataSuccess, fetchUserDataFailure } = this.props;
       const { status: result, user } = await getUserByEmail({ email });
@@ -43,8 +40,7 @@ class Login extends Component {
       });
       this.checkPassword();
     };
-
-  checkPassword = async (e) => {
+    this.checkPassword = async () => {
       const { email, password } = this.state.data;
       const response = await isPassValid({ email, password });
       this.setState({
@@ -52,19 +48,20 @@ class Login extends Component {
         check: { ...this.state.check, password: true },
       });
     };
-
-  handleContinue = async (e) => {
+    this.handleContinue = async (e) => {
       const { check, status } = this.state;
-      const { user, user:{ id }, userAuth } = this.props;
+      const { user, user: { id }, userAuth } = this.props;
       if (check.email && check.password && status.email && status.password) {
         e.preventDefault();
         const result = await singInById({ id });
-        const path = result ? '/': 'login';
+        const path = result ? '/' : 'login';
         user.isAuth = true;
         await userAuth(user);
         this.props.history.push(path);
       }
     };
+  }
+
 
   render() {
     const { check, status } = this.state;
@@ -72,7 +69,6 @@ class Login extends Component {
             <>
             <form className = 'apiko-form'>
                 <p className = 'apiko-form-title'>Login</p>
-
                 <InputGroup
                   label = "Login"
                   type = "text"

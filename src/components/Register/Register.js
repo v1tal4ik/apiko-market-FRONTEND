@@ -47,7 +47,7 @@ class Register extends Component {
     };
 
     checkName = ({ target: { value: name } }) => {
-      const exp = /[^A-Za-z\d]/;
+      const exp = /[^A-Za-z \d]/;
       const result = !(((exp.test(name)) || !(name)));
       this.setState({
         status: { ...this.state.status, fullName: result },
